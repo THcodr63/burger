@@ -1,14 +1,16 @@
 var express = require("express");
-var metRide = require("method-override");
-var bodPar = require("body-parser");
+var bodyParser = require("body-parser");
+var methodOverride = require("method-override");
 
-var port = 8080;
+var port = process.env.PORT || 8000;
 
 var app = express();
 
 app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(methodOverride("_method"));
 
 var exphbs = require("express-handlebars");
 
